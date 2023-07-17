@@ -36,12 +36,15 @@ class Solution:
         
         #TODO: Write code below to returnn an int with the solution to the prompt.
         
-        checkpoints.sort()
         max_distance = 0
-        for i in range(1, len(checkpoints)):
-            distance = checkpoints[i] - checkpoints[i-1]
-            if distance > max_distance:
-                max_distance = distance
+        min_checkpoint = min(checkpoints)
+        max_checkpoint = max(checkpoints)
+        for i in range(min_checkpoint, max_checkpoint+1):
+            if i in checkpoints:
+                distance = i - min_checkpoint
+                if distance > max_distance:
+                    max_distance = distance
+                min_checkpoint = i
         return max_distance
 
 def main():
